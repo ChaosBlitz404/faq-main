@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+
+    body{
+      background-image:url('assets/images/background-pattern-desktop.svg');
+      background-repeat: no-repeat;
+      background-color:hsl(279, 100%, 97%);
+      font-family:'Work Sans';
+
+
+    }
+
+    .container{
+      display:flex;
+      flex-direction:column;
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      border-radius:15px;
+      background-color:white;
+      padding:10px 25px;
+      box-shadow:2px 2px 35px;
+
+      width:600px;
+
+    }
+
+    .faqText{
+      display:flex;
+      flex-direction:row;
+    }
+
+    .questions{
+      display:flex;
+      flex-direction:row;
+    }
+
+    .questions img{
+      margin-left:auto;
+    }
+
+    p{
+      color:hsl(292, 16%, 49%);
+      display:none;
+
+    }
+
+    h3{
+      font-weight:bold;
+      line-height:0px;
+      cursor:pointer;
+      
+
+    }
+
+    .faqText h1{
+      margin-left:20px;
+      font-size:3em;
+    }
+
+    .show{
+      display:block;
+      cursor:pointer;
+    }
+
+    .hidden{
+      display:none;
+      cursor:none;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <div class="faqText">
+      <img src="assets/images/icon-star.svg">
+      <h1>FAQs</h1>
+    </div>
+
+    <div>
+
+      <div class="questions">
+        <h3>
+          What is Frontend Mentor, and how will it help me?
+        </h3>
+        <img src="assets/images/icon-plus.svg" class="show">
+        <img src="assets/images/icon-minus.svg" class="hidden">
+      </div>
+
+      <p>
+        Frontend Mentor offers realistic coding challenges to help developers improve their 
+        frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for 
+        all levels and ideal for portfolio building.
+      </p>
+
+    </div>
+
+    <div>
+
+      <div class="questions">
+        <h3>
+          Is Frontend Mentor free?
+        </h3>
+        <img src="assets/images/icon-plus.svg" class="show">
+        <img src="assets/images/icon-minus.svg" class="hidden">
+      </div>
+
+      <p>
+        Yes, Frontend Mentor offers both free and premium coding challenges, with the free 
+        option providing access to a range of projects suitable for all skill levels.
+      </p>
+
+    </div>
+
+    <div>
+      <div class="questions">
+        <h3>
+          Can I use Frontend Mentor projects in my portfolio?
+        </h3>
+        <img src="assets/images/icon-plus.svg" class="show">
+        <img src="assets/images/icon-minus.svg" class="hidden">
+      </div>
+
+      <p>
+        Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+        way to showcase your skills to potential employers!
+      </p>
+    </div>
+
+    <div>
+
+      <div class="questions">
+        <h3>
+          How can I get help if I'm stuck on a challenge?
+        </h3>
+        <img src="assets/images/icon-plus.svg" class="show">
+        <img src="assets/images/icon-minus.svg" class="hidden">
+      </div>
+
+      <p>
+        The best place to get help is inside Frontend Mentor's Discord community. There's a help 
+        channel where you can ask questions and seek support from other community members.
+      </p>  
+
+    </div>
+  
+  </main>
+
+  <script>
+    let h3Elements = document.querySelectorAll('h3');
+
+    h3Elements.forEach(elem =>{
+      elem.addEventListener('mouseover',event=>{
+        event.target.style.color = "hsl(292, 100%, 26%)";
+      })
+
+      elem.addEventListener('mouseout',event =>{
+        event.target.style.color = 'black';
+      });
+
+      elem.addEventListener('click',event=>{
+        //(elem.parentElement.parentElement.children[1].style.display == "none"
+        if(elem.parentElement.children[1].classList.contains("show"))
+        {
+          elem.parentElement.parentElement.children[1].style.display = "block";
+          elem.parentElement.children[1].classList.add("hidden");
+          elem.parentElement.children[1].classList.remove("show");
+          elem.parentElement.children[2].classList.remove("hidden");
+          elem.parentElement.children[2].classList.add("show");
+          
+        }
+        else
+        {
+          elem.parentElement.parentElement.children[1].style.display = "none";
+          elem.parentElement.children[1].classList.remove("hidden");
+          elem.parentElement.children[1].classList.add("show");
+          elem.parentElement.children[2].classList.add("hidden");
+          elem.parentElement.children[2].classList.remove("show");
+        }
+
+      });
+    });
+
+    let imgElements = document.querySelectorAll('img');
+
+    imgElements.forEach(elem =>{
+      elem.addEventListener('click',event=>{
+
+        if(elem.parentElement.children[1].classList.contains("show"))
+        {
+          elem.parentElement.parentElement.children[1].style.display = "block";
+          elem.parentElement.children[1].classList.add("hidden");
+          elem.parentElement.children[1].classList.remove("show");
+          elem.parentElement.children[2].classList.remove("hidden");
+          elem.parentElement.children[2].classList.add("show");
+          
+        }
+        else
+        {
+          elem.parentElement.parentElement.children[1].style.display = "none";
+          elem.parentElement.children[1].classList.remove("hidden");
+          elem.parentElement.children[1].classList.add("show");
+          elem.parentElement.children[2].classList.add("hidden");
+          elem.parentElement.children[2].classList.remove("show");
+        }
+
+      });
+    });
+  </script>
+  
+
+</body>
+</html>
